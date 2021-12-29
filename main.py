@@ -1,7 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter
+import get_movie
 from tkinter import messagebox
+
+import get_movie as MOV
 
 
 class MainFrame(ttk.Frame):
@@ -56,7 +59,10 @@ class MainFrame(ttk.Frame):
         if len(self.urlstr.get())==0 or len(self.savepathstr.get()) == 0 or len(self.namestr.get()) == 0:
             messagebox.showinfo('確認してください', '動画URL、保存先、保存名をすべて入力してください')
         else:
-            print("OK")
+            MOV.Do_Download(self.urlstr.get(), self.savepathstr.get(), self.namestr.get())
+            self.urlstr = ""
+            self.savepathstr = ""
+            self.namestr = ""
 
 
 root = Tk()
